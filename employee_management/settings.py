@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.emp_management',
+    'apps.attendance_leave',
 ]
 
 MIDDLEWARE = [
