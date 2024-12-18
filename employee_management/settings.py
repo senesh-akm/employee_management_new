@@ -55,7 +55,7 @@ ROOT_URLCONF = 'employee_management.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates", BASE_DIR / "apps/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'employee_management.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'employee_new',
+        'USER': 'postgres',
+        'PASSWORD': 'senesh@123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
