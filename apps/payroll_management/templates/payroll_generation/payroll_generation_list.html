@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Payroll Generation List
+{% endblock %}
+
+{% block content %}
+    <h2>Payroll Generation List</h2>
+
+    <a type="button" href="{% url 'add_payroll' %}" class="btn btn-primary btn-sm mt-4 mb-3 float-end">+ Add Payroll</a>
+    
+    <table class="table striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th style="width: 50%;">Employee</th>
+                <th style="width: 25%;">Status</th>
+                <th style="width: 25%;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pg in payroll_generation %}
+            <tr>
+                <td>{{ pg.employee.full_name }}</td>
+                <td>{{ pg.salary_processing }}</td>
+                <td>
+                    {% if pg.issued %}
+                    <span class="badge bg-success">Issued</span>
+                    {% else %}
+                    <span class="badge bg-danger">Not Issued</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <!-- <a type="button" href="{% url 'employee_details' employee.id %}" class="btn btn-warning btn-sm">View</a> -->
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" class="text-center">No payroll generation records found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
