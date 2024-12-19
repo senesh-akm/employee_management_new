@@ -1,11 +1,11 @@
 form .form-control {
-    border: 2px solid #495057;
+    border: 2px solid #b5b9bd;
     border-radius: 4px;
 }
 
 form .form-control:focus {
-    border-color: #343a40;
-    box-shadow: 0 0 5px rgba(52, 58, 64, 0.3);
+    border-color: #bdc2c7;
+    box-shadow: 0 0 5px rgba(191, 198, 204, 0.596);
 }
 
 .striped tbody tr:hover {
