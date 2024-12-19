@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.emp_management',
     'apps.attendance_leave',
+    'apps.payroll_management',
 ]
 
 MIDDLEWARE = [
