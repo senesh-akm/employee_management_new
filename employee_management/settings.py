@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.emp_management',
     'apps.attendance_leave',
     'apps.payroll_management',
+    'apps.performance_management',
 ]
 
 MIDDLEWARE = [
