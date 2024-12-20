@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'apps.payroll_management',
     'apps.performance_management',
     'apps.recruitment_onboarding',
+    'apps.training_development',
 ]
 
 MIDDLEWARE = [
