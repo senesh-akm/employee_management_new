@@ -1,6 +1,5 @@
 from datetime import datetime
 from django.shortcuts import render, get_object_or_404, redirect
-from django.template.loader import get_template
 from .models import Employee, Education, WorkHistory
 from .forms import EmployeeForm, EducationForm, WorkHistoryForm
 from django.forms import modelformset_factory
@@ -54,11 +53,9 @@ def add_employee(request):
         "financial_fields": financial_fields,
     }
 
-    print(get_template('base.html'))
     return render(request, "add_employee.html", context)
 
 def employee_list(request):
-    print(get_template('base.html'))
     employees = Employee.objects.all()
     return render(request, "employee_list.html", {"employees": employees})
 
@@ -71,7 +68,7 @@ def employee_details(request, pk):
         try:
             employee.dob = datetime.strptime(request.POST.get("dob"), "%Y-%m-%d").date()
         except (ValueError, TypeError):
-            employee.dob = None  # Handle invalid or blank dates gracefully
+            employee.dob = None
 
         try:
             employee.date_of_joining = datetime.strptime(request.POST.get("date_of_joining"), "%Y-%m-%d").date()
@@ -105,7 +102,6 @@ def employee_details(request, pk):
         employee.save()
         return redirect("employee_list")
 
-    print(get_template('base.html'))
     return render(request, "employee_details.html", {
         "employee": employee,
         "educations": educations,

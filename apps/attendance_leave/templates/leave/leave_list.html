@@ -12,12 +12,12 @@
     <table class="table striped table-hover align-middle">
         <thead>
             <tr>
-                <th style="width: 20%;">Employee</th>
+                <th style="width: 25%;">Employee</th>
                 <th style="width: 15%;">Leave Type</th>
-                <th style="width: 20%;">From</th>
-                <th style="width: 20%;">To</th>
-                <th style="width: 20%;">Status</th>
-                <th style="width: 15%;">Actions</th>
+                <th style="width: 15%;">From</th>
+                <th style="width: 15%;">To</th>
+                <th style="width: 10%;">Status</th>
+                <th style="width: 20%;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -35,11 +35,11 @@
                     {% elif leave.approval_status == "Rejected" %}
                     <span class="badge bg-danger">Rejected</span>
                     {% elif leave.approval_status == "Cancelled" %}
-                    <span class="badge bg-orange">Cancelled</span>
+                    <span class="badge bg-orange text-dark">Cancelled</span>
                     {% endif %}
                 </td>
                 <td>
-                    <a type="button" href="{% url 'leave_details' leave.id %}" class="btn btn-warning btn-sm float-end">View</a>
+                    <a type="button" href="{% url 'leave_details' leave.id %}" class="btn btn-warning btn-sm">View</a>
                 </td>
             </tr>
             {% empty %}
