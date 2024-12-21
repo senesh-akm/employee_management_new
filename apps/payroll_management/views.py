@@ -5,9 +5,11 @@ from django.http import JsonResponse
 import logging
 
 def salary_processing_list(request):
-    salary_processings = SalaryProcessing.objects.all()
-    return render(request, "salary_processing/salary_processing_list.html", {"salary_processings": salary_processings})
-
+    context = {
+        'salary_processings': SalaryProcessing.objects.all(),
+        'payroll_salary_tax_urls': ['salary_processing_list', 'payroll_generation_list', 'tax_management_list'],
+    }
+    return render(request, 'salary_processing/salary_processing_list.html', context)
 
 def add_salary_processing(request):
     if request.method == "POST":
@@ -88,8 +90,11 @@ def salary_details(request, pk):
 
 
 def payroll_generation_list(request):
-    payroll_generation = PayrollGeneration.objects.all()
-    return render(request, "payroll_generation/payroll_generation_list.html", {"payroll_generation": payroll_generation})
+    context = {
+        'payroll_generation': PayrollGeneration.objects.all(),
+        'payroll_salary_tax_urls': ['salary_processing_list', 'payroll_generation_list', 'tax_management_list'],
+    }
+    return render(request, 'payroll_generation/payroll_generation_list.html', context)
 
 
 logger = logging.getLogger(__name__)
@@ -153,8 +158,11 @@ def add_payroll(request):
 
 
 def tax_management_list(request):
-    tax_management = TaxManagement.objects.all()
-    return render(request, "tax_management/tax_management_list.html", {"tax_management": tax_management})
+    context = {
+        'tax_management': TaxManagement.objects.all(),
+        'payroll_salary_tax_urls': ['salary_processing_list', 'payroll_generation_list', 'tax_management_list'],
+    }
+    return render(request, 'tax_management/tax_management_list.html', context)
 
 
 def add_tax_management(request):

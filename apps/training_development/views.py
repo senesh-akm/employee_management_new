@@ -3,8 +3,11 @@ from .models import TrainingNeedsAssessment, TrainingPlan, TrainingRecord
 from apps.emp_management.models import Employee
 
 def need_trainings_list(request):
-    training_needs = TrainingNeedsAssessment.objects.all()
-    return render(request, "training_needs/need_trainings_list.html", {"training_needs": training_needs})
+    context = {
+        'training_needs': TrainingNeedsAssessment.objects.all(),
+        'training_urls': ['need_trainings_list', 'training_plans_list', 'training_record_list'],
+    }
+    return render(request, 'training_needs/need_trainings_list.html', context)
 
 
 def add_need_training(request):
@@ -65,8 +68,11 @@ def need_details(request, training_need_id):
 
 
 def training_plans_list(request):
-    tarining_plans = TrainingPlan.objects.all()
-    return render(request, "training_plans/training_plans_list.html", {"tarining_plans": tarining_plans})
+    context = {
+        'tarining_plans': TrainingPlan.objects.all(),
+        'training_urls': ['need_trainings_list', 'training_plans_list', 'training_record_list'],
+    }
+    return render(request, 'training_plans/training_plans_list.html', context)
 
 
 def add_training_plan(request):
@@ -120,8 +126,11 @@ def training_plan_view(request, plan_id):
 
 
 def training_record_list(request):
-    training_records = TrainingRecord.objects.all()
-    return render(request, "training_records/training_record_list.html", {"training_records": training_records})
+    context = {
+        'training_records': TrainingRecord.objects.all(),
+        'training_urls': ['need_trainings_list', 'training_plans_list', 'training_record_list'],
+    }
+    return render(request, 'training_records/training_record_list.html', context)
 
 
 def add_training_record(request):

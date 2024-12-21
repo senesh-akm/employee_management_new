@@ -4,8 +4,11 @@ from apps.emp_management.models import Employee
 from datetime import datetime
 
 def attendance_list(request):
-    attendances = Attendance.objects.all()
-    return render(request, 'attendance/attendance_list.html', {'attendances': attendances})
+    context = {
+        'attendances': Attendance.objects.all(),
+        'attendance_leave_urls': ['attendance_list', 'leave_list'],
+    }
+    return render(request, 'attendance/attendance_list.html', context)
 
 def add_leave(request):
     if request.method == "POST":
@@ -76,5 +79,8 @@ def leave_details(request, pk):
     })
 
 def leave_list(request):
-    leaves = Leave.objects.all()
-    return render(request, 'leave/leave_list.html', {'leaves': leaves})
+    context = {
+        'leaves': Leave.objects.all(),
+        'attendance_leave_urls': ['attendance_list', 'leave_list'],
+    }
+    return render(request, 'leave/leave_list.html', context)

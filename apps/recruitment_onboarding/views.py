@@ -4,8 +4,11 @@ from .models import JobPosting, CandidateScreening, OnboardingProcess
 from apps.emp_management.models import Employee
 
 def job_posts_list(request):
-    job_posts = JobPosting.objects.all()
-    return render(request, "job_posting/job_posts_list.html", {"job_posts": job_posts})
+    context = {
+        'job_posts': JobPosting.objects.all(),
+        'recruitment_urls': ['job_posts_list', 'candidate_screening_list', 'onboarding_list'],
+    }
+    return render(request, 'job_posting/job_posts_list.html', context)
 
 
 def add_job_post(request):
@@ -56,8 +59,11 @@ def view_job_post(request, job_post_id):
 
 
 def candidate_screening_list(request):
-    candidate_screenings = CandidateScreening.objects.all()
-    return render(request, "candidate_screening/candidate_screening_list.html", {"candidate_screenings": candidate_screenings})
+    context = {
+        'candidate_screenings': CandidateScreening.objects.all(),
+        'recruitment_urls': ['job_posts_list', 'candidate_screening_list', 'onboarding_list'],
+    }
+    return render(request, 'candidate_screening/candidate_screening_list.html', context)
 
 
 def add_candidate_screening(request):
@@ -117,8 +123,11 @@ def screening_details(request, screening_id):
 
 
 def onboarding_list(request):
-    onboardings = OnboardingProcess.objects.all()
-    return render(request, "onboarding_process/onboarding_list.html", {"onboardings": onboardings})
+    context = {
+        'onboardings': OnboardingProcess.objects.all(),
+        'recruitment_urls': ['job_posts_list', 'candidate_screening_list', 'onboarding_list'],
+    }
+    return render(request, 'onboarding_process/onboarding_list.html', context)
 
 
 def add_onboarding(request):

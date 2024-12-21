@@ -4,8 +4,12 @@ from .models import PerformanceReview, GoalSetting, FeedbackMechanism
 from apps.emp_management.models import Employee
 
 def performance_reviews_list(request):
-    performance_reviews = PerformanceReview.objects.all()
-    return render(request, "performance_reviews/performance_reviews_list.html", {"performance_reviews": performance_reviews})
+    context = {
+        'performance_reviews': PerformanceReview.objects.all(),
+        'performance_urls': ['performance_reviews_list', 'goal_setting_list', 'feedback_list'],
+    }
+    return render(request, 'performance_reviews/performance_reviews_list.html', context)
+
 
 def add_performance_review(request):
     if request.method == "POST":
@@ -62,8 +66,11 @@ def review_details(request, review_id):
 
 
 def goal_settings_list(request):
-    goals = GoalSetting.objects.all()
-    return render(request, "goal_settings/goal_setting_list.html", {"goals": goals})
+    context = {
+        'goals': GoalSetting.objects.all(),
+        'performance_urls': ['performance_reviews_list', 'goal_setting_list', 'feedback_list'],
+    }
+    return render(request, 'goal_settings/goal_setting_list.html', context)
 
 
 def add_goal_setting(request):
@@ -117,8 +124,11 @@ def goal_setting_details(request, goal_id):
 
 
 def feedback_list(request):
-    feedbacks = FeedbackMechanism.objects.all()
-    return render(request, "feedback_mechanism/feedback_list.html", {"feedbacks": feedbacks})
+    context = {
+        'feedbacks': FeedbackMechanism.objects.all(),
+        'performance_urls': ['performance_reviews_list', 'goal_setting_list', 'feedback_list'],
+    }
+    return render(request, 'feedback_mechanism/feedback_list.html', context)
 
 
 def add_feedback(request):

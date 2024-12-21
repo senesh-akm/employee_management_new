@@ -1,0 +1,125 @@
+<!-- Left Sidebar -->
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+    <div class="position-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="#">
+                    <i class="bi bi-house-door-fill"></i> Dashboard
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'employee_list' %}active{% endif %}" href="{% url 'employee_list' %}">
+                    <i class="bi bi-people-fill"></i> Employees
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name in attendance_leave_urls %}active{% endif %}" 
+                   data-bs-toggle="collapse" href="#attendanceLeaveSubmenu" role="button" 
+                   aria-expanded="{% if request.resolver_match.url_name in attendance_leave_urls %}true{% else %}false{% endif %}" 
+                   aria-controls="attendanceLeaveSubmenu">
+                    <i class="bi bi-calendar"></i> Attendance & Leave
+                </a>
+                <div class="collapse {% if request.resolver_match.url_name in attendance_leave_urls %}show{% endif %}" id="attendanceLeaveSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'attendance_list' %}active{% endif %}" href="{% url 'attendance_list' %}">Attendance</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'leave_list' %}active{% endif %}" href="{% url 'leave_list' %}">Leave</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name in payroll_salary_tax_urls %}active{% endif %}" 
+                   data-bs-toggle="collapse" href="#payrollSubmenu" role="button" 
+                   aria-expanded="{% if request.resolver_match.url_name in payroll_salary_tax_urls %}true{% else %}false{% endif %}" 
+                   aria-controls="payrollSubmenu">
+                    <i class="bi bi-cash"></i> Payroll Management
+                </a>
+                <div class="collapse {% if request.resolver_match.url_name in payroll_salary_tax_urls %}show{% endif %}" id="payrollSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'salary_processing_list' %}active{% endif %}" href="{% url 'salary_processing_list' %}">Salary Processing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'payroll_generation_list' %}active{% endif %}" href="{% url 'payroll_generation_list' %}">Payroll Generation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'tax_management_list' %}active{% endif %}" href="{% url 'tax_management_list' %}">Tax Management</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name in performance_urls %}active{% endif %}" 
+                   data-bs-toggle="collapse" href="#performanceSubmenu" role="button" 
+                   aria-expanded="{% if request.resolver_match.url_name in performance_urls %}true{% else %}false{% endif %}" 
+                   aria-controls="performanceSubmenu">
+                    <i class="bi bi-graph-up"></i> Performance
+                </a>
+                <div class="collapse {% if request.resolver_match.url_name in performance_urls %}show{% endif %}" id="performanceSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'performance_reviews_list' %}active{% endif %}" href="{% url 'performance_reviews_list' %}">Performance Reviews</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'goal_setting_list' %}active{% endif %}" href="{% url 'goal_setting_list' %}">Goals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'feedback_list' %}active{% endif %}" href="{% url 'feedback_list' %}">Feedbacks</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name in recruitment_urls %}active{% endif %}" 
+                   data-bs-toggle="collapse" href="#recruitmentSubmenu" role="button" 
+                   aria-expanded="{% if request.resolver_match.url_name in recruitment_urls %}true{% else %}false{% endif %}" 
+                   aria-controls="recruitmentSubmenu">
+                    <i class="bi bi-person-lines-fill"></i> Recruitment
+                </a>
+                <div class="collapse {% if request.resolver_match.url_name in recruitment_urls %}show{% endif %}" id="recruitmentSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'job_posts_list' %}active{% endif %}" href="{% url 'job_posts_list' %}">Job Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'candidate_screening_list' %}active{% endif %}" href="{% url 'candidate_screening_list' %}">Candidate Screening</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'onboarding_list' %}active{% endif %}" href="{% url 'onboarding_list' %}">Onboardering</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name in training_urls %}active{% endif %}" 
+                   data-bs-toggle="collapse" href="#trainingSubmenu" role="button" 
+                   aria-expanded="{% if request.resolver_match.url_name in training_urls %}true{% else %}false{% endif %}" 
+                   aria-controls="trainingSubmenu">
+                    <i class="bi bi-journal"></i> Employee Training
+                </a>
+                <div class="collapse {% if request.resolver_match.url_name in training_urls %}show{% endif %}" id="trainingSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'need_trainings_list' %}active{% endif %}" href="{% url 'need_trainings_list' %}">Training Needs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'training_plans_list' %}active{% endif %}" href="{% url 'training_plans_list' %}">Training Plans</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'training_record_list' %}active{% endif %}" href="{% url 'training_record_list' %}">Training Records</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
