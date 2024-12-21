@@ -28,13 +28,13 @@ def add_need_training(request):
             return redirect("need_trainings_list")
         except Employee.DoesNotExist:
             print("Employee not found!")  # Debugging
-            return render(request, "tarining_plans/add_need_training.html", {
+            return render(request, "training_needs/add_need_training.html", {
                 "error_message": "Invalid employee selected. Please try again.",
                 "employees": Employee.objects.all()
             })
     else:
         employees = Employee.objects.all()
-        return render(request, "tarining_plans/add_need_training.html", {"employees": employees})
+        return render(request, "training_needs/add_need_training.html", {"employees": employees})
     
 
 def need_details(request, training_need_id):
@@ -54,14 +54,14 @@ def need_details(request, training_need_id):
 
             return redirect("need_trainings_list")
         except Employee.DoesNotExist:
-            return render(request, "tarining_plans/need_details.html", {
+            return render(request, "training_needs/need_details.html", {
                 "error_message": "Invalid employee selected. Please try again.",
                 "employees": Employee.objects.all(),
                 "training_need": training_need,
             })
 
     employees = Employee.objects.all()
-    return render(request, "tarining_plans/need_details.html", {
+    return render(request, "training_needs/need_details.html", {
         "employees": employees,
         "training_need": training_need,
     })
