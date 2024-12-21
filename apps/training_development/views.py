@@ -3,8 +3,11 @@ from .models import TrainingNeedsAssessment, TrainingPlan, TrainingRecord
 from apps.emp_management.models import Employee
 
 def need_trainings_list(request):
-    training_needs = TrainingNeedsAssessment.objects.all()
-    return render(request, "training_needs/need_trainings_list.html", {"training_needs": training_needs})
+    context = {
+        'training_needs': TrainingNeedsAssessment.objects.all(),
+        'training_urls': ['need_trainings_list', 'training_plans_list', 'training_record_list'],
+    }
+    return render(request, 'training_needs/need_trainings_list.html', context)
 
 
 def add_need_training(request):
@@ -25,13 +28,13 @@ def add_need_training(request):
             return redirect("need_trainings_list")
         except Employee.DoesNotExist:
             print("Employee not found!")  # Debugging
-            return render(request, "training_needs/add_need_training.html", {
+            return render(request, "tarining_plans/add_need_training.html", {
                 "error_message": "Invalid employee selected. Please try again.",
                 "employees": Employee.objects.all()
             })
     else:
         employees = Employee.objects.all()
-        return render(request, "training_needs/add_need_training.html", {"employees": employees})
+        return render(request, "tarining_plans/add_need_training.html", {"employees": employees})
     
 
 def need_details(request, training_need_id):
@@ -51,22 +54,25 @@ def need_details(request, training_need_id):
 
             return redirect("need_trainings_list")
         except Employee.DoesNotExist:
-            return render(request, "training_needs/need_details.html", {
+            return render(request, "tarining_plans/need_details.html", {
                 "error_message": "Invalid employee selected. Please try again.",
                 "employees": Employee.objects.all(),
                 "training_need": training_need,
             })
 
     employees = Employee.objects.all()
-    return render(request, "training_needs/need_details.html", {
+    return render(request, "tarining_plans/need_details.html", {
         "employees": employees,
         "training_need": training_need,
     })
 
 
 def training_plans_list(request):
-    tarining_plans = TrainingPlan.objects.all()
-    return render(request, "training_plans/training_plans_list.html", {"tarining_plans": tarining_plans})
+    context = {
+        'tarining_plans': TrainingPlan.objects.all(),
+        'training_urls': ['need_trainings_list', 'training_plans_list', 'training_record_list'],
+    }
+    return render(request, 'training_plans/training_plans_list.html', context)
 
 
 def add_training_plan(request):
@@ -120,8 +126,11 @@ def training_plan_view(request, plan_id):
 
 
 def training_record_list(request):
-    training_records = TrainingRecord.objects.all()
-    return render(request, "training_records/training_record_list.html", {"training_records": training_records})
+    context = {
+        'training_records': TrainingRecord.objects.all(),
+        'training_urls': ['need_trainings_list', 'training_plans_list', 'training_record_list'],
+    }
+    return render(request, 'training_records/training_record_list.html', context)
 
 
 def add_training_record(request):
