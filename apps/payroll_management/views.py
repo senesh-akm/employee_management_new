@@ -198,7 +198,7 @@ def get_salary(request, employee_id):
 
 
 def tax_details(request, pk):
-    tax_management = get_object_or_404(SalaryProcessing, pk=pk)
+    tax_management = get_object_or_404(TaxManagement, pk=pk)
     employees = Employee.objects.all()
 
     if request.method == "POST":
@@ -213,7 +213,7 @@ def tax_details(request, pk):
         tax_management.other_taxes = other_taxes
         tax_management.save()
 
-        return redirect("tax_management")
+        return redirect("tax_management_list")
 
     return render(request, "tax_management/tax_details.html", {
         "tax_management": tax_management,
