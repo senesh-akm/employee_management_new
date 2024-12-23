@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'apps.performance_management',
     'apps.recruitment_onboarding',
     'apps.training_development',
+    'apps.dashboard',
 ]
 
 MIDDLEWARE = [

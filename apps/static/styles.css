@@ -1,13 +1,22 @@
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-body h4 {
+    font-size: 1.2rem;
+}
+.card-body h2 {
+    font-size: 2.5rem;
+}
+
 form .form-control {
     border: 2px solid #b5b9bd;
     border-radius: 4px;
 }
-
 form .form-control:focus {
     border-color: #bdc2c7;
     box-shadow: 0 0 5px rgba(191, 198, 204, 0.596);
 }
-
 .striped tbody tr:hover {
     background-color: #f1f1f1;
 }
@@ -26,28 +35,23 @@ form .form-control:focus {
     padding-top: 60px;
     z-index: 1000;
 }
-
 .sidebar .nav .nav-link {
     font-size: 17px;
     color: #333;
     margin-bottom: 18px;
     transition: all 0.3s ease;
 }
-
 .nav-link i {
     margin-right: 8px;
 }
-
 .nav-link.active {
     background-color: #17a5b8;
     color: white;
 }
-
 .sidebar .nav .nav-link:hover {
     background-color: #f8f9fa;
     color: #007bff;
 }
-
 .sidebar .collapse .nav-link {
     font-size: 14px;
     padding-left: 20px;
