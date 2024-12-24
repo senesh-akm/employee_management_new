@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from apps.emp_management.models import Employee
 from apps.attendance_leave.models import Leave, Attendance
 from apps.payroll_management.models import SalaryProcessing
 
+@login_required
 def dashboard_view(request):
     total_employees = Employee.objects.count()
     total_departments = (
